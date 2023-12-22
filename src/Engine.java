@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Engine {
     Board b; //a5 to d6
     void initialise() {
@@ -8,13 +10,13 @@ public class Engine {
             {
                 if(i==0)
                 {
-                    if(j==0 || j==7)
+                    if(j==0 || j==7) //white is defined at 0 and 1 black at 6 & 7
                     {
                         b.square[i][j].setP(new Rook(true, true));
                     }
                     else if (j==1 || j==6)
                     {
-                        b.square[i][j].p = new Knight(true, true);
+                        //b.square[i][j].p = new Knight(true, true);
                     }
                     else if (j==2 || j==5)
                     {
@@ -31,7 +33,7 @@ public class Engine {
                 }
                 else if(i==1)
                 {
-                    b.square[i][j].p = new Pawn(true, true);
+                    //b.square[i][j].p = new Pawn(true, true);
                 }
                 if(i==7)
                 {
@@ -69,10 +71,10 @@ public class Engine {
     void moveapiece()
     {
         System.out.println("enter a peice");
-        Squares[] possiblity =b.square[0][0].p.possiblemovements(b.square[0][0], b);
-        for(int s=0;s< possiblity.length;s++)
+        ArrayList <Squares> possiblity=b.square[0][0].p.possiblemovements(b.square[0][0],b);
+        for(int s=0;s< possiblity.size();s++)
         {
-            System.out.println(possiblity[s].j);
+            System.out.println(possiblity.get(s).getJ());
         }
     }
 

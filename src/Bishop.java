@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Bishop extends Peice{
     public Bishop(boolean team, boolean state) {
         this.team=team;
@@ -5,7 +7,10 @@ public class Bishop extends Peice{
     }
 
     @Override
-    Squares[] possiblemovements(Squares sq, Board b) {
-        return new Squares[0];
+    ArrayList <Squares> possiblemovements(Squares sq, Board b) {
+        ArrayList <Squares> possible = new ArrayList<>();
+        super.line(sq,b,possible,1,1);
+        super.line(sq,b,possible,-1,1);
+        return possible;
     }
 }

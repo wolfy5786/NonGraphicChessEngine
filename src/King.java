@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class King extends Peice {
 
     public King(boolean team, boolean state) {
@@ -7,8 +9,8 @@ class King extends Peice {
 
 
     @Override
-    Squares[] possiblemovements(Squares sq, Board b) {
-        return new Squares[0];
+    ArrayList<Squares> possiblemovements(Squares sq, Board b) {
+        return null;
     }
 }
 

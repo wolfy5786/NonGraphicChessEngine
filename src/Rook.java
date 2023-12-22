@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Rook extends Peice{
     public Rook(boolean team, boolean state) {
         this.team=team;
@@ -6,25 +8,10 @@ public class Rook extends Peice{
 
 
     @Override
-    Squares[] possiblemovements(Squares sq, Board b) {
-        Squares possibleh[];
-        Squares possiblev[];
-        possibleh=super.horrizontalline(sq,b);
-        possiblev=super.verticalline(sq, b);
-         Squares possible[]= new Squares[possibleh.length+ possiblev.length];
-         int j=0;
-        for (int i=0; i< possibleh.length;i++)
-        {
-            possible[i]=possibleh[i];
-            j++;
-        }
-        for (int i=0;i< possiblev.length;i++)
-        {
-            possible[j]=possiblev[i];
-            j++;
-        }
-
-
+    ArrayList <Squares> possiblemovements(Squares sq, Board b) {
+        ArrayList <Squares> possible = new ArrayList<>();
+        super.line(sq,b,possible,1,0);
+        super.line(sq,b,possible,0,1);
         return possible;
     }
 }

@@ -1,5 +1,5 @@
 public class Squares {
-    int i;
+    int i; //i is rows and j is columns
     int j;
     boolean sq;
     Peice p;
