@@ -10,7 +10,9 @@ public class Bishop extends Peice{
     ArrayList <Squares> possiblemovements(Squares sq, Board b) {
         ArrayList <Squares> possible = new ArrayList<>();
         super.line(sq,b,possible,1,1);
+        super.line(sq,b,possible,-1,-1);
         super.line(sq,b,possible,-1,1);
+        super.line(sq,b,possible,1,-1);
         return possible;
     }
 }

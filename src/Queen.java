@@ -11,9 +11,13 @@ public class Queen extends Peice{
     ArrayList<Squares> possiblemovements(Squares sq, Board b) {
         ArrayList <Squares> possible = new ArrayList<>();
         super.line(sq,b,possible,1,0);
+        super.line(sq,b,possible,-1,0);
         super.line(sq,b,possible,0,1);
+        super.line(sq,b,possible,0,-1);
         super.line(sq,b,possible,1,1);
+        super.line(sq,b,possible,-1,-1);
         super.line(sq,b,possible,-1,1);
+        super.line(sq,b,possible,1,-1);
         return possible;
     }
 }
