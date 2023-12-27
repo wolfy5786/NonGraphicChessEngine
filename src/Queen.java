@@ -10,14 +10,19 @@ public class Queen extends Peice{
     @Override
     ArrayList<Squares> possiblemovements(Squares sq, Board b) {
         ArrayList <Squares> possible = new ArrayList<>();
-        super.line(sq,b,possible,1,0);
-        super.line(sq,b,possible,-1,0);
-        super.line(sq,b,possible,0,1);
-        super.line(sq,b,possible,0,-1);
-        super.line(sq,b,possible,1,1);
-        super.line(sq,b,possible,-1,-1);
-        super.line(sq,b,possible,-1,1);
-        super.line(sq,b,possible,1,-1);
+        Squares enemy;
+         for(int i=-1;i<=1;i++)
+        {
+            for(int j=-1;j<=1;j++)
+            {
+                if(i==0 &&j==0)
+                {
+                    continue;
+                }
+                enemy=super.line(sq,b,possible,i,j);
+                add_enemy(enemy,possible);
+            }
+        }
         return possible;
     }
 }

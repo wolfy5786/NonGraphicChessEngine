@@ -3,7 +3,8 @@ public class test {
     {
         Engine engine =new Engine();
         engine.initialise();
-        engine.moveapiece();
-
+        do {
+            engine.render();
+        }while(0<1);
     }
 }

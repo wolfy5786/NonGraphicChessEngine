@@ -10,14 +10,14 @@ public class Knight extends Peice {
     @Override
     ArrayList <Squares> possiblemovements(Squares sq, Board b) {
         ArrayList <Squares> possible =new ArrayList<>();
+        Squares enemy;
         for(int i=-2;i<=2;i++)
         {
-            System.out.println("called");
             if(i==0)
             {
                 continue;
             }
-            for(int j=-2;j<2;j++)
+            for(int j=-2;j<=2;j++)
             {
                 if (j==0)
                 {
@@ -27,11 +27,10 @@ public class Knight extends Peice {
                 {
                     continue;
                 }
-                line(sq,b,possible,i,j,1);
+                enemy=line(sq,b,possible,i,j,1);
+                add_enemy(enemy,possible);
             }
         }
-
-
         return possible;
     }
 }
