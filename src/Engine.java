@@ -5,6 +5,7 @@ public class Engine {
     Board b; //a5 to d6
     Squares wking;
     Squares bking;
+    boolean turn;
     void initialise() {
         b=new Board();
         for(int i=0;i<=7;i++) //i is rows and j is columns
@@ -68,12 +69,14 @@ public class Engine {
 
             }
         }
+        turn =true;
         wking=b.square[0][4];
         bking=b.square[7][4];
         create();
     }
-    void moveapiece(Squares sq)
+    boolean moveapiece(Squares sq) //return true if peice was moved else false
     {
+        boolean flag=false;
         Scanner sc= new Scanner(System.in);
         ArrayList <Squares> possiblity=sq.p.possiblemovements(sq,b);// calculates possible squares for that peice
         illegalmoves(sq,possiblity);
@@ -92,10 +95,13 @@ public class Engine {
                 trackkings(b.square[x][y],sq.p);
             }
             sq.p=null;
+            flag=true;
         }
         else {
             System.out.println("invalid");
+            flag = false;
         }
+        return flag;
     }
     void create()
     {
@@ -107,9 +113,11 @@ public class Engine {
         System.out.println("enter peice co-ordinates");
         int x=sc.nextInt();
         int y =sc.nextInt();
-        if(b.square[x][y].p!=null)
+        if(b.square[x][y].p!=null && (!((b.square[x][y].p.team)^turn)))
         {
-            moveapiece(b.square[x][y]);
+            if(moveapiece(b.square[x][y])){
+                turn=!turn;
+            }
         }
         else {
             System.out.println("wrong square");
